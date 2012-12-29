@@ -10,12 +10,12 @@ assert(csv_exporter.export_as_csv)
 
 def serve():
     web.configure()
-    web.app.run()
+    web.run()
 
 
 def serve_test():
     web.configure()
-    return web.app.test_client()
+    return web.test_client()
 
 
 def main():
