@@ -1,0 +1,67 @@
+ {
+    "success": "true",
+    "result": {
+        "resource_id": "3c32eff-273c-413a-a8d4-69433d02c943",
+        "fields": [
+            {
+                "type": "int4",
+                "id": "_id"
+            },
+            {
+                "type": "timestamp",
+                "id": "date"
+            },
+            {
+                "type": "numeric",
+                "id": "temperature"
+            },
+            {
+                "type": "text",
+                "id": "place"
+            }
+        ],
+        "records": [
+            {
+                "date": "2011-01-03T00:00:00",
+                "_id": 1,
+                "place": "Berkeley",
+                "temperature": "5"
+            },
+            {
+                "date": "2011-01-03T00:00:00",
+                "_id": 2,
+                "place": "Berkeley",
+                "temperature": "5"
+            },
+            {
+                "date": "2011-01-03T00:00:00",
+                "_id": 3,
+                "place": "Berkeley",
+                "temperature": "5"
+            },
+            {
+                "date": "2011-01-03T00:00:00",
+                "_id": 4,
+                "place": "Berkeley, California",
+                "temperature": "5"
+            },
+            {
+                "date": "2011-01-03T00:00:00",
+                "_id": 5,
+                "place": "Berkeley",
+                "temperature": "5"
+            },
+            {
+                "date": "2011-01-03T00:00:00",
+                "_id": 6,
+                "place": "Berkeley",
+                "temperature": "5"
+            }
+        ],
+        "_links": {
+            "start": "/api/action/datastore_search?resource_id=3c32eff-273c-413a-a8d4-69433d02c943",
+            "next": "/api/action/datastore_search?offset=100&resource_id=3c32eff-273c-413a-a8d4-69433d02c943"
+        },
+        "total": 6
+    }
+}
