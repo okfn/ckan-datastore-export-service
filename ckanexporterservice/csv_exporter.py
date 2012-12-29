@@ -24,9 +24,19 @@ def fetch_from(url):
     return data
 
 
+def validate(data):
+    if 'ckan_url' not in data:
+        raise util.JobError('No CKAN url provided. Provide it as `ckan_url`.')
+    if 'resource_id' not in data:
+        raise util.JobError('No resource id provided. Provide it as `resource_id`.')
+
+
 @job.sync
 def export_as_csv(task_id, provided):
     provided = provided['data']
+
+    validate(provided)
+
     resource_url = urljoin(
         provided['ckan_url'],
         '/api/action/datastore_search?resource_id={res_id}'.format(res_id=provided['resource_id']))
