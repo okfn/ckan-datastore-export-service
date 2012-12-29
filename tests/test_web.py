@@ -70,13 +70,11 @@ class TestWeb():
     def test_export_long_csv(self):
         url = 'http://www.ckan.org/api/action/datastore_search?resource_id=3c32eff-273c-413a-a8d4-69433d02c943'
         HTTPretty.register_uri(HTTPretty.GET, url,
-                           body=get_static_file('long.json'),
-                           content_type="application/json")
-
-        url = 'http://www.ckan.org/api/action/datastore_search?offset=100&resource_id=3c32eff-273c-413a-a8d4-69433d02c943'
-        HTTPretty.register_uri(HTTPretty.GET, url,
-                           body=get_static_file('long_2.json'),
-                           content_type="application/json")
+                            responses=[
+                               HTTPretty.Response(body=get_static_file('long.json'), status=200),
+                               HTTPretty.Response(body=get_static_file('long_2.json'), status=200)
+                            ],
+                            content_type="application/json")
 
         rv = app.post('/job',
                       data=json.dumps({
@@ -91,3 +89,6 @@ class TestWeb():
         return_data = json.loads(rv.data)
         assert 'job_id' in return_data
         assert return_data['status'] == 'complete', return_data['error']
+        assert_equal(return_data['data'].count('\n'), 201)
+        assert '1\r' in return_data['data']
+        assert '199\r' in return_data['data']

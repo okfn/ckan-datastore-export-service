@@ -46,7 +46,6 @@ def export_as_csv(task_id, provided):
     # write data and fetch more, if necessary
     written = 0
     while written < total:
-        #print resource_url
         records = data['result']['records']
         for record in records:
             wr.writerow([record[column] for column in header])
