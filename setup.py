@@ -23,6 +23,6 @@ setup(name='ckan-exporter-service',
       ],
       entry_points={
             'console_scripts':
-                  ['ckan-exporter-service = importerservice.main:main'],
+                  ['ckan-exporter-service = ckanexporterservice.main:main'],
             },
       )
