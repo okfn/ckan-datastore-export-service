@@ -54,7 +54,10 @@ class TestWeb():
                             "data": {
                                 "ckan_url": "http://www.ckan.org/",
                                 "resource_id": "3c32eff-273c-413a-a8d4-69433d02c943"
-                                }
+                            },
+                            "metadata": {
+                                "mimetype": "text/csv"
+                            }
                             }),
                       content_type='application/json')
 
@@ -63,6 +66,13 @@ class TestWeb():
         assert return_data['status'] == 'complete', return_data['error']
         assert_equal(
             _normalize_newlines(return_data['data']),
+            _normalize_newlines(get_static_file('simple.csv'))
+            )
+
+        rv = app.get('/job/{0}/data'.format(return_data['job_id']))
+        assert_equal(rv.content_type, 'text/csv; charset=utf-8')
+        assert_equal(
+            _normalize_newlines(rv.data),
             _normalize_newlines(get_static_file('simple.csv'))
             )
 
@@ -82,8 +92,11 @@ class TestWeb():
                             "data": {
                                 "ckan_url": "http://www.ckan.org/",
                                 "resource_id": "3c32eff-273c-413a-a8d4-69433d02c943"
-                                }
-                            }),
+                            },
+                            "metadata": {
+                                "mimetype": "text/csv"
+                            }
+                        }),
                       content_type='application/json')
 
         return_data = json.loads(rv.data)
