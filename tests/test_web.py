@@ -70,7 +70,7 @@ class TestWeb():
             )
 
         rv = app.get('/job/{0}/data'.format(return_data['job_id']))
-        assert_equal(rv.content_type, 'text/csv; charset=utf-8')
+        assert 'text/csv' in rv.content_type
         assert_equal(
             _normalize_newlines(rv.data),
             _normalize_newlines(get_static_file('simple.csv'))
