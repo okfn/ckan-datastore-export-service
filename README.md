@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/okfn/ckan-datastore-export-service.png)](https://travis-ci.org/okfn/ckan-datastore-export-service)
 
+__WORK IN PROGRESS__ - Expect release in early 2013.
+
 A service that converts a resource from the CKAN DataStore to CSV (atm).
 
 ## Set up
