@@ -17,9 +17,10 @@ def fetch_from(url):
         raise util.JobError(
             'CKAN DataStorer responded with status code {0} and content {1}'.format(response.status_code, response.text))
 
-    data = response.json
+    data = response.json()
     if not data:
         raise util.JobError('CKAN DataStorer response cannot be parsed.')
+
 
     return data
 

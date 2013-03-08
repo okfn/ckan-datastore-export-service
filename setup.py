@@ -19,7 +19,7 @@ setup(name='ckan-exporter-service',
       zip_safe=False,
       install_requires=['''
             ckan-service-provider
-            Requests'''
+            Requests >= 1.0.0'''
       ],
       entry_points={
             'console_scripts':
